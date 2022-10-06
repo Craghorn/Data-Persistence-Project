@@ -18,6 +18,6 @@ public class ScoresUIHandler : MonoBehaviour
     }
     public void Back()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

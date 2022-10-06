@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using TMPro;
 
 public class MenuUIHandler : MonoBehaviour
 {
+    public TMP_InputField inputField;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +20,13 @@ public class MenuUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Simple methods for buttons
     public void StartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void ToOptions()
@@ -35,7 +38,7 @@ public class MenuUIHandler : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
-
+    
     public void Exit()
     {
 #if UNITY_EDITOR
@@ -43,5 +46,10 @@ public class MenuUIHandler : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void SetName()
+    {
+        MainDataManager.Instance.currentPlayerName = inputField.text;
     }
 }

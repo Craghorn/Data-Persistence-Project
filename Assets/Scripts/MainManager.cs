@@ -20,10 +20,12 @@ public class MainManager : MonoBehaviour
     
     private bool m_GameOver = false;
 
-
     // Start is called before the first frame update
     void Start()
     {
+
+        BestScoreText.text = $"Best Score : {MainDataManager.Instance.currentPlayerName} : {MainDataManager.Instance.currentPlayerScore}";
+
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -67,12 +69,15 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
+        MainDataManager.Instance.currentPlayerScore = m_Points;
         ScoreText.text = $"Score : {m_Points}";
     }
 
     public void GameOver()
     {
         m_GameOver = true;
+        BestScoreText.text = $"Best Score : {MainDataManager.Instance.currentPlayerName} : {MainDataManager.Instance.currentPlayerScore}";
         GameOverText.SetActive(true);
     }
+        
 }
